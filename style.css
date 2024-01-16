@@ -1,0 +1,238 @@
+/*=============== VARIABLES CSS ===============*/
+:root {
+
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --clr-neutral-100: hsl(0, 0%, 98%);
+    --clr-neutral-400: hsl(229, 6%, 66%);
+    --clr-neutral-700: hsl(234, 12%, 34%);
+
+    --clr-accent-1: hsl(180, 62%, 55%);
+    --clr-accent-2: hsl(0, 78%, 62%);
+    --clr-accent-3: hsl(34, 97%, 64%);
+    --clr-accent-4: hsl(212, 86%, 64%);
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: 'Poppins', sans-serif;
+    --normal-font-size: .938rem;
+
+    /*========== Font weight ==========*/
+    /* Weight Reference : https://cssreference.io/property/font-weight/ */
+    --font-extra-light: 200;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+}
+
+/*========== 1. Use a more-intuitive box-sizing model ==========*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/*========== 2. Remove default margin ==========*/
+* {
+    margin: 0;
+}
+
+/*========== Typographic tweaks! ==========*/
+/*3. Add accessible line-height*/
+/*4. Improve text rendering*/
+body {
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*========== 5. Improve media defaults ==========*/
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+/*========== 6. Remove built-in form typography styles ==========*/
+input, button, textarea, select {
+    font: inherit;
+}
+
+/*========== 7. Avoid text overflows ==========*/
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+    line-height: 1.55;
+}
+
+/*========== 8. Create a root stacking context ==========*/
+#root, #__next {
+    isolation: isolate;
+}
+
+/*=============== GENERAL STYLE ===============*/
+body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-regular);
+    color: var(--clr-neutral-400);
+    background-color: var(--clr-neutral-100);
+}
+
+/*=============== CONTAINER ===============*/
+.container {
+    --margin-spacing: 1rem;
+
+    display: grid;
+    place-content: center;
+    margin: 3rem 2rem;
+    overflow: hidden;
+}
+
+/*=============== HERO ===============*/
+.hero {
+    max-width: 550px;
+}
+
+/*=============== HOME TEXT ===============*/
+.wrapper {
+    text-align: center;
+    margin-bottom: calc((var(--margin-spacing) * 5) - .25rem);
+}
+
+.wrapper h1{
+    font-size: 1.5rem;
+    font-weight: var(--font-extra-light);
+    margin-bottom: var(--margin-spacing);
+}
+
+.desktop-br {
+    display: none;
+}
+
+.accent {
+    color: var(--clr-neutral-700);
+    font-weight: var(--font-semi-bold)
+}
+
+.split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.875rem;
+}
+
+/*=============== CARD ===============*/
+.card {
+    background-color: rgb(255, 255, 255);
+    border-radius: .5rem;
+    padding: 1.5rem 1.75rem;
+    box-shadow: rgba(149, 157, 165, 0.1) -10px 10px 8px;
+}
+
+/*=============== CARD CONTENT ===============*/
+.card h3{
+    color: var(--clr-neutral-700);
+    margin-bottom: calc(var(--margin-spacing) - .75rem);
+}
+
+.card p{
+    font-size: .813rem;
+    margin-bottom: calc(var(--margin-spacing) * 2);
+}
+
+/*=============== ICONS ===============*/
+.box {
+    display: flex;
+    justify-content: right;
+}
+
+.card img{
+    width: 58px;
+}
+
+/*=============== CARDS BORDER TOP COLOR ===============*/
+.supervisor {
+    border-top: 4px solid var(--clr-accent-1);
+}
+
+.builder {
+    border-top: 4px solid var(--clr-accent-2);
+}
+
+.karma {
+    border-top: 4px solid var(--clr-accent-3);
+}
+
+.calculator {
+    border-top: 4px solid var(--clr-accent-4);
+}
+
+/*=============== RESPONSIVE ===============*/
+@media screen and (min-width: 1150px) {
+    .supervisor {
+        grid-area: a;
+    }
+
+    .builder {
+        grid-area: b;
+    }
+
+    .karma {
+        grid-area: c;
+    }
+
+    .calculator {
+        grid-area: d;
+    }
+
+    .split {
+        display: grid;
+        grid-template-areas: 
+                    "a b d"
+                    ". c .";
+    }
+
+    .hero {
+        max-width: 100%;
+    }
+
+    .wrapper h1{
+        font-size: 2.25rem;
+        line-height: 1.4;
+        margin-bottom: 1.188rem;
+    }
+
+    .desktop-br {
+        display: inline;
+    }
+
+    .card {
+        background-color: rgb(255, 255, 255);
+        border-radius: .2rem;
+        padding: 2rem;
+        width: 350px;
+    }
+
+    .card h3{
+        font-size: 1.25rem;
+        margin-bottom: calc(var(--margin-spacing) - .5rem);
+    }
+
+    .card p{
+        margin-bottom: 2.688rem;
+    }  
+
+    :is(.supervisor, .calculator) {
+        transform: translateY(56%);
+    }
+}
+
+/*=============== ATTRIBUTION ===============*/
+.attribution {
+    font-family: var(--second-font);
+    text-align: center;
+    margin-top: calc(var(--margin-spacing) * 2);
+}
+
+.attribution a {
+    text-decoration: none;
+    color: var(--clr-accent-4);
+    font-weight: var(--font-semi-bold);
+}
